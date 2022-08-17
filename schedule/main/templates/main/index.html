@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+:root {
+--basic_colour: #969696;
+--dark_colour: #141419;
+--bg: #483d8b;
+--transition: all 40ms ease-in-out;
+}
+* {
+margin: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: "Oswald", sans-serif;
+background-color: var(--bg);
+color: white;
+}
+
+header {
+display: block;
+width: 80%;
+margin: 5% auto 2%;
+}
+
+h1 {
+font-size: 5em;
+font-weight: 300;
+}
+
+p,
+ a {
+font-size: 1em;
+font-weight: 300;
+letter-spacing: 0.1em;
+}
+
+a:link,
+a:visited {
+color: white;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: wavy underline;
+}
+
+.wrapper {
+width: 80%;
+margin: 0 auto 3%;
+display: grid;
+grid-template-columns: 3fr 3fr 3fr 1fr;
+grid-gap: 1%;
+}
+
+button,
+.selected {
+font-family: unset;
+height: 100%;
+width: 100%;
+margin: auto;
+padding: auto;
+text-align: center;
+border-radius: 8px;
+border: 3px solid white;
+background-color: var(--bg);
+color: white;
+font-size: 1.5em;
+}
+
+.sub-button::after {
+border: 3px solid white;
+background-color: var(--bg);
+color: white;
+}
+
+input,
+select {
+width: 100%;
+height: 100%;
+margin: auto;
+background-color: var(--bg);
+transition: var(--transition);
+border: 3px solid white;
+padding: 12px;
+border-radius: 8px;
+outline: none;
+display: flex;
+align-items: center;
+overflow: hidden;
+font-weight: 300;
+font-size: 1.5em;
+color: white;
+}
+
+select:hover {
+background-color: white;
+color: black;
+border-radius: 16px;
+}
+
+input:focus-within,
+.sub-button:hover,
+ input:hover {
+border-radius: 16px;
+border-color: var(--bg);
+background-color: white;
+color: black;
+}
+
+::-webkit-input-placeholder {
+color:rgb(193, 188, 188);
+}
+:-moz-placeholder {
+color:rgb(193, 188, 188);
+}
+::-moz-placeholder {
+color:rgb(193, 188, 188);
+}
+:-ms-input-placeholder {
+color:rgb(193, 188, 188);
+}
+
+::-webkit-calendar-picker-indicator {
+filter: invert(1);
+}
+
+.calendare-space {
+width: 80%;
+margin: 1% auto;
+background-color: white;
+border-radius: 8px;
+display: grid;
+grid-template-columns: 3fr 7fr;
+grid-gap: 1%;
+}
+
+.calendare-space:last-child {
+margin-bottom: 5%;
+}
+
+h3 {
+color: black;
+font-family: "Oswald", sans-serif;
+font-size: 2em;
+padding-right: 2%;
+line-height: 1.2em;
+}
+
+.calendare-space p {
+display: inline;
+color: black;
+position: relative;
+padding-left: 2%;
+}
+
+span {
+display: block;
+padding-top: 0.5%;
+}
+
+i {
+color: black;
+}
+
+.time,
+.card {
+background-color: white;
+border-radius: 8px;
+margin: 7%;
+}
+
+.card {
+margin: 3% 0 5%;
+}
+
+.nothing {
+display: block;
+width: 80%;
+margin: auto;
+color: white;
+font-size: 2.5em;
+font-weight: 300;
+line-height: 100%;
+margin-bottom: 23%;
+}
+
+footer {
+flex: 0 0 auto;
+text-align: center;
+margin: 2% auto;
+}
+</style>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+    <main>
+        <form class="wrapper" method="post">
+            {% csrf_token %}
+            {{ form.criterion }}
+            {{ form.cr_str }}
+            {{ form.date }}
+            <button name="submit" class="sub-button" type="submit">ОК</button>
+        </form>
+        {% if tasks %}
+        {% for item in tasks %}
+        <div class="calendare-space">
+            <div class="time">
+            {% if item.num_of_class == 1 %}
+                <h3>8:50-10:20</h3>
+                <p>первая пара</p>
+            {% elif item.num_of_class == 2 %}
+                <h3>10:35-12:05</h3>
+                <p>вторая пара</p>
+            {% elif item.num_of_class == 3 %}
+                <h3>12:35-14:05</h3>
+                <p>третья пара</p>
+            {% elif item.num_of_class == 4 %}
+                <h3>14:15-15:45</h3>
+                <p>четвёртая пара</p>
+            {% elif item.num_of_class == 5 %}
+                <h3>15:55-17:20</h3>
+                <p>пятая пара</p>
+            {% endif %}
+            </div>
+            <div class="schedule">
+                <div class="card">
+                    <h3>{{ item.name_of_class }}</h3>
+                    <span><i class="bi bi-file-earmark-text-fill"></i><p class="type">{{ item.type }}</p></span>
+                    <span><i class="bi bi-geo-alt-fill"></i><p class="audience">{{ item.auditorium }}</p></span>
+                    <span><i class="bi bi-people-fill"></i><p class="group">{{ item.group }}</p></span>
+                    <span><i class="bi bi-mortarboard-fill"></i><p class="prepod">{{ item.teacher }}</p></span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <span class="nothing">{{ empty_text }}</span>
+        {% endif %}
+    </main>
+    <footer>
+        <a href="https://t.me/darthplcb">Свяжитесь с нами</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+:root {
+    --basic_colour: #969696;
+    --dark_colour: #141419;
+    --bg: #1a1a93;
+    --transition: all 40ms ease-in-out;
+}
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Oswald", sans-serif;
+    background-color: var(--bg);
+    color: white;
+}
+
+header {
+    display: block;
+    width: 80%;
+    margin: 5% auto 2%;
+}
+
+h1 {
+    font-size: 5em;
+    font-weight: 400;
+}
+
+p {
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto 3%;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 1fr;
+    grid-gap: 1%;
+}
+
+button,
+.selected {
+    font-family: unset;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding: auto;
+    text-align: center;
+    border-radius: 8px;
+    border: 3px solid white;
+    background-color: var(--bg);
+    color: white;
+    font-size: 1.5em;
+}
+
+.sub-button::after {
+    border: 3px solid white;
+    background-color: var(--bg);
+    color: white;
+}
+
+input,
+select {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: var(--bg);
+    transition: var(--transition);
+    border: 3px solid white;
+    padding: 12px;
+    border-radius: 8px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-weight: 300;
+    font-size: 1.5em;
+    color: white;
+}
+
+select:hover {
+    background-color: white;
+    color: black;
+    border-radius: 16px;
+}
+
+input:focus-within,
+.sub-button:hover {
+    border-radius: 16px;
+    border-color: var(--bg);
+    background-color: white;
+    color: black;
+}
+
+::-webkit-input-placeholder {
+    color:rgb(193, 188, 188);
+ }
+ :-moz-placeholder {
+    color:rrgb(193, 188, 188);
+ }
+ ::-moz-placeholder {
+    color:rgb(193, 188, 188);
+ }
+ :-ms-input-placeholder {
+    color:rgb(193, 188, 188);
+ }
+
+ ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.calendare-space {
+    width: 80%;
+    margin: 1% auto;
+    background-color: white;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-gap: 1%;
+}
+
+h3 {
+    color: black;
+    font-family: "Oswald", sans-serif;
+    font-size: 2em;
+    padding-right: 2%;
+    line-height: 1.2em;
+}
+
+.calendare-space p {
+    display: inline;
+    color: black;
+    position: relative;
+    padding-left: 2%;
+}
+
+span {
+    display: block;
+    padding-top: 0.5%;
+}
+
+i {
+    color: black;
+}
+
+.time,
+.card {
+    background-color: white;
+    border-radius: 8px;
+    margin: 7%;
+}
+
+.card {
+    margin: 3% 0 5%;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    padding-top: 60px;
+    margin-bottom: 20px;
+}
